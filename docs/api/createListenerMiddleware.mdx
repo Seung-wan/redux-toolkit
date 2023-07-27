@@ -485,9 +485,12 @@ export const listenerMiddleware = createListenerMiddleware()
 export type AppStartListening = TypedStartListening<RootState, AppDispatch>
 
 export const startAppListening =
-  listenerMiddleware.startListening as AppStartListening
+  listenerMiddleware.startListening satisfies AppStartListening as AppStartListening
 
-export const addAppListener = addListener as TypedAddListener<
+export const addAppListener = addListener satisfies TypedAddListener<
+  RootState,
+  AppDispatch
+> as TypedAddListener<
   RootState,
   AppDispatch
 >
